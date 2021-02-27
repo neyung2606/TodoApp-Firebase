@@ -21,7 +21,7 @@ const TodoList = ({ todo, isProgress, id }) => {
           secondary={isProgress ? "In Progress" : "Completed"}
         />
       </ListItem>
-      <Button onClick={handleChangeProgress}>
+      <Button data-testid="handleTransform" onClick={handleChangeProgress}>
         {isProgress ? "Done" : "Undone"}
       </Button>
       <Button onClick={deleteTodo}>X</Button>

@@ -1,7 +1,6 @@
 import { Button, TextField } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
 import { db } from "./config/firebase_config";
-import "./App.css";
 import TodoList from "./Todo";
 
 const App = () => {
@@ -18,7 +17,7 @@ const App = () => {
 
   const addTodo = (e) => {
     e.preventDefault();
-
+    console.log(todo)
     db.collection("todos").add({
       todo: todo,
       isProgress: true,
@@ -41,7 +40,7 @@ const App = () => {
   };
 
   return (
-    <div className="App">
+    <div style={{ textAlign: 'center' }}>
       <h1>Văn Nguyên Todo App</h1>
       <form>
         <TextField
@@ -49,12 +48,14 @@ const App = () => {
           value={todo}
           onChange={(e) => onChangeText(e)}
           label="Write a todo"
+          placeholder="Search"
         />
         <Button
           type="submit"
           variant="contained"
           onClick={addTodo}
-          style={{ display: "none" }}
+          // style={{ display: "none" }}
+          data-testid="search-button"
         >
           Submit
         </Button>
